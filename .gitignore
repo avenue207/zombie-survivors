@@ -1,0 +1,22 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# Original asset pack (source of zombie models; only public/models/zombie is actually used)
+download
+
+# Cloudflare / Wrangler
+.wrangler
+.dev.vars
+.dev.vars.*
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+*.log

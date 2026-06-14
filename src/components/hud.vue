@@ -1,0 +1,94 @@
+<template>
+  <div class="pointer-events-none absolute inset-0 z-10 select-none">
+    <!-- Top-left: status -->
+    <div class="absolute top-4 left-4 flex flex-col gap-2 text-white">
+      <!-- Title (hidden on mobile to avoid overlapping buttons/boss bar) -->
+      <div class="hidden items-center gap-3 rounded-2xl bg-black/40 px-4 py-2 backdrop-blur-md sm:flex">
+        <span class="text-3xl font-black tracking-wider">Zombie Survivors</span>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5 text-xs font-bold sm:gap-2 sm:text-sm">
+        <span class="rounded-xl bg-black/40 px-2 py-1 backdrop-blur-md sm:px-3" :class="fpsClass">
+          FPS {{ stats.fps }}
+        </span>
+        <span class="rounded-xl bg-black/40 px-2 py-1 backdrop-blur-md sm:px-3">Enemy {{ stats.enemies }}</span>
+        <span class="rounded-xl bg-black/40 px-2 py-1 backdrop-blur-md sm:px-3">Kills {{ stats.kills }}</span>
+        <span class="rounded-xl bg-black/40 px-2 py-1 backdrop-blur-md sm:px-3">Time {{ timeText }}</span>
+      </div>
+
+      <!-- HP -->
+      <div class="relative h-5 w-40 overflow-hidden rounded-full bg-black/40 backdrop-blur-md sm:w-56">
+        <div
+          class="h-full rounded-full bg-gradient-to-r from-red-500 to-rose-400 transition-[width] duration-100"
+          :style="{ width: hpPercent + '%' }"
+        />
+        <div class="absolute inset-0 flex items-center justify-center text-xs font-black text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.9)]">
+          {{ stats.hp }} / {{ stats.maxHp }}
+        </div>
+      </div>
+
+      <!-- Level and XP -->
+      <div class="flex items-center gap-2">
+        <span class="rounded-lg bg-amber-400/90 px-2 py-0.5 text-sm font-black text-black">
+          Lv {{ stats.level }}
+        </span>
+        <div class="h-3 w-32 overflow-hidden rounded-full bg-black/40 backdrop-blur-md sm:w-44">
+          <div
+            class="h-full rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-[width] duration-100"
+            :style="{ width: xpPercent + '%' }"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Boss bar -->
+    <div
+      v-if="stats.bossActive"
+      class="absolute left-1/2 top-32 w-[min(92vw,32rem)] -translate-x-1/2 text-center text-white sm:top-4 sm:w-[min(80vw,32rem)]"
+    >
+      <div class="mb-1 text-xs font-black tracking-widest text-rose-300 sm:text-sm">
+        ⚠ {{ stats.bossName }} ⚠
+        <span class="ml-1 text-amber-300/90">[{{ stats.bossSkill }}]</span>
+        <span class="ml-1 text-white/60">{{ stats.bossDefeated + 1 }}/{{ stats.bossTotal }}</span>
+      </div>
+      <div class="h-5 overflow-hidden rounded-full bg-black/50 ring-1 ring-rose-400/40 backdrop-blur-md">
+        <div
+          class="h-full bg-gradient-to-r from-rose-600 to-red-400 transition-[width] duration-100"
+          :style="{ width: bossPercent + '%' }"
+        />
+      </div>
+    </div>
+
+    <!-- Controls hint -->
+    <div class="absolute bottom-4 right-4 rounded-xl bg-black/30 px-3 py-1 text-xs text-white/70 backdrop-blur-md">
+      WASD/arrow keys to move・Bottom-left joystick (touch)・Weapon auto-attack
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import type { GameStats } from '../game/game';
+
+const props = defineProps<{ stats: GameStats }>();
+
+const bossPercent = computed(() =>
+  props.stats.bossMaxHp > 0 ? (props.stats.bossHp / props.stats.bossMaxHp) * 100 : 0,
+);
+
+const hpPercent = computed(() =>
+  props.stats.maxHp > 0 ? (props.stats.hp / props.stats.maxHp) * 100 : 0,
+);
+const xpPercent = computed(() =>
+  props.stats.xpToNext > 0 ? Math.min(100, (props.stats.xp / props.stats.xpToNext) * 100) : 0,
+);
+const timeText = computed(() => {
+  const total = Math.floor(props.stats.time);
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  return `${m}:${s.toString().padStart(2, '0')}`;
+});
+const fpsClass = computed(() =>
+  props.stats.fps >= 55 ? 'text-green-300' : props.stats.fps >= 30 ? 'text-amber-300' : 'text-red-300',
+);
+</script>

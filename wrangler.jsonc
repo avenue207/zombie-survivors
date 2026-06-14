@@ -1,0 +1,16 @@
+{
+  // Cloudflare Pages 設定：可直接 `wrangler pages deploy --branch=main`
+  // SPA 轉址由 public/_redirects 處理
+  "name": "animal-survivors",
+  "compatibility_date": "2025-01-01",
+  "pages_build_output_dir": "./dist",
+  // 全球排行榜/統計用 D1（functions/api/* 透過 env.DB 存取）
+  // 建立後把 wrangler d1 create 回傳的 database_id 填入下方
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "animal-survivors-db",
+      "database_id": "2d378670-e8f0-4eb0-8309-a955f1e0576c"
+    }
+  ]
+}
