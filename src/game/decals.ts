@@ -3,9 +3,9 @@ import '@babylonjs/loaders';
 
 /** Blood decal models (ground stains on zombie death) */
 const BLOOD_PATHS = [
-  '/models/zombie/blood_1.gltf',
-  '/models/zombie/blood_2.gltf',
-  '/models/zombie/blood_3.gltf',
+  `${import.meta.env.BASE_URL}models/zombie/blood_1.gltf`,
+  `${import.meta.env.BASE_URL}models/zombie/blood_2.gltf`,
+  `${import.meta.env.BASE_URL}models/zombie/blood_3.gltf`,
 ];
 /** Number of pre-cloned copies per blood type; total pool size = type count × this value (ring-buffer overwrite) */
 const POOL_PER = 10;

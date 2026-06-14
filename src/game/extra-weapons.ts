@@ -136,7 +136,7 @@ export class ExtraWeapons {
 
   /** Replace the sphere with the axe model orb(each wrapped holder so it can rotate) */
   private async loadOrbWeapon(scene: Scene) {
-    const tmpl = await loadModel(scene, '/models/zombie/weapon_axe.gltf', 0.2);
+    const tmpl = await loadModel(scene, `${import.meta.env.BASE_URL}models/zombie/weapon_axe.gltf`, 0.2);
     if (!tmpl) return;
     tmpl.setEnabled(false);
     /** Apply an emissive material so GlowLayer Bloom (orange-red) */
@@ -162,7 +162,7 @@ export class ExtraWeapons {
 
   /** Load the spear model and build the boomerang pool (use a box if loading fails) */
   private async loadBoomerangs(scene: Scene) {
-    const tmpl = await loadModel(scene, '/models/zombie/weapon_spear.gltf', 0.6);
+    const tmpl = await loadModel(scene, `${import.meta.env.BASE_URL}models/zombie/weapon_spear.gltf`, 0.6);
     for (let i = 0; i < MAX_BOOMERANGS; i++) {
       const holder = new TransformNode(`boomerang-${i}`, scene);
       if (tmpl) {

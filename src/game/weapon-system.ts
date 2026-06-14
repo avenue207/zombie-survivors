@@ -86,7 +86,7 @@ export class WeaponSystem {
   /** Load the knife model, merged into a single mesh and take over thin instance buffer, replacing the sphere */
   private async loadKnife(scene: Scene) {
     try {
-      const res = await SceneLoader.ImportMeshAsync('', '/models/zombie/', 'weapon_knife.gltf', scene);
+      const res = await SceneLoader.ImportMeshAsync('', `${import.meta.env.BASE_URL}models/zombie/`, 'weapon_knife.gltf', scene);
       res.animationGroups.forEach((g) => g.stop());
       const parts = res.meshes.filter((m): m is Mesh => m instanceof Mesh && m.getTotalVertices() > 0);
       const merged = Mesh.MergeMeshes(parts, true, true, undefined, false, true);

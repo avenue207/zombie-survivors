@@ -21,22 +21,22 @@ const FIRE_RANGE = 26;
 const KEEP_DIST = 13;
 
 const ZOMBIE_TYPES: ZombieType[] = [
-  { path: '/models/zombie/zombie_basic.gltf', hp: 3, speed: 5.5, scale: 1 },
-  { path: '/models/zombie/zombie_ribcage.gltf', hp: 2, speed: 8, scale: 0.95 }, // Fast
-  { path: '/models/zombie/zombie_chubby.gltf', hp: 12, speed: 3.2, scale: 1.35 }, // Tank
-  { path: '/models/zombie/zombie_arm.gltf', hp: 4, speed: 5, scale: 1 },
-  { path: '/models/zombie/zombie_skeleton.gltf', hp: 4, speed: 6, scale: 1 }, // Undead skeleton
-  { path: '/models/zombie/zombie_skeleton_headless.gltf', hp: 6, speed: 5, scale: 1, ranged: true }, // Headless skeleton (ranged)
+  { path: `${import.meta.env.BASE_URL}models/zombie/zombie_basic.gltf`, hp: 3, speed: 5.5, scale: 1 },
+  { path: `${import.meta.env.BASE_URL}models/zombie/zombie_ribcage.gltf`, hp: 2, speed: 8, scale: 0.95 }, // Fast
+  { path: `${import.meta.env.BASE_URL}models/zombie/zombie_chubby.gltf`, hp: 12, speed: 3.2, scale: 1.35 }, // Tank
+  { path: `${import.meta.env.BASE_URL}models/zombie/zombie_arm.gltf`, hp: 4, speed: 5, scale: 1 },
+  { path: `${import.meta.env.BASE_URL}models/zombie/zombie_skeleton.gltf`, hp: 4, speed: 6, scale: 1 }, // Undead skeleton
+  { path: `${import.meta.env.BASE_URL}models/zombie/zombie_skeleton_headless.gltf`, hp: 6, speed: 5, scale: 1, ranged: true }, // Headless skeleton (ranged)
 ];
 
 /** Enemy bestiary info (for the menu) */
 export const ZOMBIE_INFO = [
-  { name: 'Basic Zombie', role: 'Minion', desc: 'The most common basic zombie with average HP — overwhelms you by sheer numbers.', model: '/models/zombie/zombie_basic.gltf' },
-  { name: 'Ribcage', role: 'Fast', desc: 'Very fast, low HP, closes in quickly — deal with it first.', model: '/models/zombie/zombie_ribcage.gltf' },
-  { name: 'Chubby Zombie', role: 'Tank', desc: 'A slow, high-HP tank that takes more firepower to bring down.', model: '/models/zombie/zombie_chubby.gltf' },
-  { name: 'One-Armed Zombie', role: 'Normal', desc: 'A run-of-the-mill melee zombie with average speed and HP.', model: '/models/zombie/zombie_arm.gltf' },
-  { name: 'Skeleton soldier', role: 'Undead', desc: 'Pirate skeletons: fairly fast, average HP, appearing in groups.', model: '/models/zombie/zombie_skeleton.gltf' },
-  { name: 'Headless skeleton', role: 'Ranged', desc: 'An undead shooter that fires at you from range and backs off when you close in.', model: '/models/zombie/zombie_skeleton_headless.gltf' },
+  { name: 'Basic Zombie', role: 'Minion', desc: 'The most common basic zombie with average HP — overwhelms you by sheer numbers.', model: `${import.meta.env.BASE_URL}models/zombie/zombie_basic.gltf` },
+  { name: 'Ribcage', role: 'Fast', desc: 'Very fast, low HP, closes in quickly — deal with it first.', model: `${import.meta.env.BASE_URL}models/zombie/zombie_ribcage.gltf` },
+  { name: 'Chubby Zombie', role: 'Tank', desc: 'A slow, high-HP tank that takes more firepower to bring down.', model: `${import.meta.env.BASE_URL}models/zombie/zombie_chubby.gltf` },
+  { name: 'One-Armed Zombie', role: 'Normal', desc: 'A run-of-the-mill melee zombie with average speed and HP.', model: `${import.meta.env.BASE_URL}models/zombie/zombie_arm.gltf` },
+  { name: 'Skeleton soldier', role: 'Undead', desc: 'Pirate skeletons: fairly fast, average HP, appearing in groups.', model: `${import.meta.env.BASE_URL}models/zombie/zombie_skeleton.gltf` },
+  { name: 'Headless skeleton', role: 'Ranged', desc: 'An undead shooter that fires at you from range and backs off when you close in.', model: `${import.meta.env.BASE_URL}models/zombie/zombie_skeleton_headless.gltf` },
 ];
 
 const BASE_HEIGHT = 2.4;

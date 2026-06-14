@@ -28,7 +28,7 @@ interface BossDef {
 const BOSS_DEFS: BossDef[] = [
   {
     name: 'Chubby Zombie',
-    model: '/models/zombie/zombie_chubby.gltf',
+    model: `${import.meta.env.BASE_URL}models/zombie/zombie_chubby.gltf`,
     radius: 6,
     speed: 6,
     contactDps: 32,
@@ -40,7 +40,7 @@ const BOSS_DEFS: BossDef[] = [
   },
   {
     name: 'Frenzied Ribcage',
-    model: '/models/zombie/zombie_ribcage.gltf',
+    model: `${import.meta.env.BASE_URL}models/zombie/zombie_ribcage.gltf`,
     radius: 4.8,
     speed: 9,
     contactDps: 28,
@@ -52,7 +52,7 @@ const BOSS_DEFS: BossDef[] = [
   },
   {
     name: 'One-Armed Brute',
-    model: '/models/zombie/zombie_arm.gltf',
+    model: `${import.meta.env.BASE_URL}models/zombie/zombie_arm.gltf`,
     radius: 6.4,
     speed: 5.5,
     contactDps: 34,
@@ -64,7 +64,7 @@ const BOSS_DEFS: BossDef[] = [
   },
   {
     name: 'Toxic Zombie',
-    model: '/models/zombie/zombie_basic.gltf',
+    model: `${import.meta.env.BASE_URL}models/zombie/zombie_basic.gltf`,
     radius: 6,
     speed: 7,
     contactDps: 30,
@@ -76,7 +76,7 @@ const BOSS_DEFS: BossDef[] = [
   },
   {
     name: 'Pirate Captain',
-    model: '/models/zombie/boss_captain.gltf',
+    model: `${import.meta.env.BASE_URL}models/zombie/boss_captain.gltf`,
     radius: 6,
     speed: 7,
     contactDps: 34,
@@ -88,7 +88,7 @@ const BOSS_DEFS: BossDef[] = [
   },
   {
     name: 'Giant Shark',
-    model: '/models/zombie/boss_shark.gltf',
+    model: `${import.meta.env.BASE_URL}models/zombie/boss_shark.gltf`,
     radius: 7,
     speed: 11,
     contactDps: 36,
@@ -100,7 +100,7 @@ const BOSS_DEFS: BossDef[] = [
   },
   {
     name: 'Deep-Sea Tentacle',
-    model: '/models/zombie/boss_tentacle.gltf',
+    model: `${import.meta.env.BASE_URL}models/zombie/boss_tentacle.gltf`,
     radius: 21,
     speed: 3,
     contactDps: 42,
